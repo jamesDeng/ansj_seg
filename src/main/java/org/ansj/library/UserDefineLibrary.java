@@ -71,7 +71,7 @@ public class UserDefineLibrary {
             return;
         }
         try {
-            ambiguityLibrary = MyStaticValue.ambiguityLibrary;
+            ambiguityLibrary = UserDefineLibrary.class.getResource(MyStaticValue.ambiguityLibrary).getPath();
         } catch (Exception exception) {
             LIBRARYLOG.warning("init ambiguity  waring :" + ambiguityLibrary
                                + " because : not find that file or can not to read !");
@@ -101,7 +101,8 @@ public class UserDefineLibrary {
         try {
             FOREST = new Forest();
             // 加载用户自定义词典
-            String userLibrary = MyStaticValue.userLibrary;
+            String userLibrary = UserDefineLibrary.class.getResource(MyStaticValue.userLibrary).getPath();
+           
             loadLibrary(FOREST, userLibrary);
         } catch (Exception e) {
             // TODO Auto-generated catch block
